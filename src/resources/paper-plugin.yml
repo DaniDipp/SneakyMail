@@ -1,7 +1,24 @@
-name: paperplugin
+name: SneakyMail
 version: "1.0"
 main: com.danidipp.sneakymail.SneakyMail
 api-version: "1.20"
 authors:
   - DaniDipp
 description: "Paper plugin for sending and receiving mail and items"
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: false
+    MagicSpells:
+      load: BEFORE
+      required: false
+commands:
+  mail:
+    description: "Opens mail interface"
+    usage: "/mail"
+    permission: "sneakymail.mail"
+  mailcheck:
+    description: "Shows info about cashed mail"
+    usage: "/mailcheck"
+    permission: "sneakymail.admin"

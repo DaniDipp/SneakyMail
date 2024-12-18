@@ -1,5 +1,6 @@
 plugins {
 	kotlin("jvm") version "2.0.20"
+	kotlin("plugin.serialization") version "2.0.20"
 }
 
 repositories {
@@ -19,10 +20,10 @@ repositories {
 dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.20")
     compileOnly("io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT")
-	// compileOnly("me.clip:placeholderapi:2.11.5")
+	compileOnly("me.clip:placeholderapi:2.11.6")
     // compileOnly("us.dynmap:dynmap-api:3.4-beta-3")
     // compileOnly("us.dynmap:DynmapCoreAPI:3.4")
-	implementation("io.github.agrevster:pocketbase-kotlin:2.6.2")
+	implementation("io.github.agrevster:pocketbase-kotlin:2.6.3")
 }
 
 tasks.jar {
