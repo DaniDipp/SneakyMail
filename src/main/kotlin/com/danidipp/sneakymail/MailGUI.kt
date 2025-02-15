@@ -56,7 +56,7 @@ class MailGUI(private val player: Player) : InventoryHolder {
         val listener = object : Listener {
             @EventHandler
             fun onInventoryClick(event: InventoryClickEvent) {
-                if (event.clickedInventory?.holder !is MailGUI) return
+                if (event.inventory.holder !is MailGUI) return
                 event.isCancelled = true
                 val item = event.currentItem ?: return
                 val data = item.itemMeta.persistentDataContainer

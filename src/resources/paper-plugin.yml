@@ -7,6 +7,9 @@ authors:
 description: "Paper plugin for sending and receiving mail and items"
 dependencies:
   server:
+    SneakyPocketbase:
+      load: BEFORE
+      required: true
     PlaceholderAPI:
       load: BEFORE
       required: false

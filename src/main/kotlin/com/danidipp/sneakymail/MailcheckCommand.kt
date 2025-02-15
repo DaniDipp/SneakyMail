@@ -4,7 +4,6 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
-import org.bukkit.entity.Player
 
 class MailcheckCommand : Command("mailcheck") {
     override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>): MutableList<String> {

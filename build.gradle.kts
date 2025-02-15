@@ -1,29 +1,28 @@
 plugins {
-	kotlin("jvm") version "2.0.20"
-	kotlin("plugin.serialization") version "2.0.20"
+	kotlin("jvm") version "2.1.0"
+	kotlin("plugin.serialization") version "2.1.0"
 }
 
 repositories {
-	mavenCentral()
 	maven {
 		url = uri("https://plugins.gradle.org/m2/")
 	}
 	maven {
+		name = "papermc"
+		url = uri("https://repo.papermc.io/repository/maven-public/")
+	}
+	maven {
 		url = uri("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 	}
-    maven {
-		url = uri("https://repo.mikeprimm.com/")
-	}
-	maven("https://repo.papermc.io/repository/maven-public/")
+	mavenCentral()
 }
 
 dependencies {
-	implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.20")
+	compileOnly("org.jetbrains.kotlin:kotlin-stdlib:2.1.0")
     compileOnly("io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT")
 	compileOnly("me.clip:placeholderapi:2.11.6")
-    // compileOnly("us.dynmap:dynmap-api:3.4-beta-3")
-    // compileOnly("us.dynmap:DynmapCoreAPI:3.4")
-	implementation("io.github.agrevster:pocketbase-kotlin:2.6.3")
+//	compileOnly(files("libs/SneakyPocketbase-1.0.jar"))
+	compileOnly(files("C:\\Users\\DaniDipp\\Downloads\\1.20.6\\SneakyPocketbase-1.0.jar"))
 }
 
 tasks.jar {

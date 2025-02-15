@@ -1,7 +1,8 @@
+@file:Suppress("PROVIDED_RUNTIME_TOO_LOW")
 package com.danidipp.sneakymail
 
-import io.github.agrevster.pocketbaseKotlin.models.Record
-import kotlinx.coroutines.launch
+import com.danidipp.sneakypocketbase.BaseRecord
+import com.danidipp.sneakypocketbase.SneakyPocketbase
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -10,7 +11,6 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
-import java.util.UUID
 
 @Serializable
 sealed class MailReward {
@@ -37,7 +37,7 @@ data class MailRecord(
     val rewards: List<MailReward>?,
     var available: Boolean,
     var note: String
-): Record() {
+): BaseRecord() {
     fun checkUuid() {
         if (recipient_uuid.isEmpty()) {
             if ( recipient_name.isNotEmpty()) {
@@ -62,9 +62,9 @@ data class MailRecord(
         val id = this.id!!
         val data = Json.encodeToString(serializer(), this)
         Bukkit.getScheduler().runTaskAsynchronously(SneakyMail.getInstance(), Runnable {
-            runBlocking { launch {
-                SneakyMail.getInstance().pbHandler.pocketbase.records.update<MailRecord>("lom2_mail", id, data)
-            } }
+            runBlocking {
+                SneakyPocketbase.getInstance().pb().records.update<MailRecord>("lom2_mail", id, data)
+            }
         })
         if (rewards == null) {
             player.sendMessage(Component.text("This mail has no rewards", NamedTextColor.RED))
